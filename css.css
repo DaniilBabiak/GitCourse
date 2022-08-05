@@ -42,3 +42,6 @@
     left:0;
     transition: left 5s cubic-bezier(0, 0, 1, 1);
 }
+.btnWrapper{
+    display: flex;
+}

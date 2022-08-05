@@ -3188,3 +3188,78 @@ Array.prototype.mult = function (n){
 
 let myArr = [1,2,3,4,5]
 console.log(myArr.mult(5))*/
+
+
+let addBtn = document.querySelector('.buttonAdd')
+addBtn.addEventListener('click',function (){
+
+    let firstNumber = document.querySelector('.firstNumber')
+    let secondNumber = document.querySelector('.secondNumber')
+    let resultCalc = document.querySelector('.resultCalc')
+    resultCalc.innerText = +firstNumber.value + +secondNumber.value
+})
+
+let minBtn = document.querySelector('.buttonMinus')
+minBtn.addEventListener('click',function (){
+    let firstNumber = document.querySelector('.firstNumber')
+    let secondNumber = document.querySelector('.secondNumber')
+    let resultCalc = document.querySelector('.resultCalc')
+    resultCalc.innerText = +firstNumber.value - +secondNumber.value
+})
+
+
+/*
+const requestURL = 'https://jsonplaceholder.typicode.com/posts'
+let resultXhrRequest = document.querySelector('.nameXhrRequest')
+let xhrBtn = document.querySelector('.xhrBtn')
+xhrBtn.addEventListener('click', async function (){
+    return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest()
+        xhr.open('GET', requestURL)
+        xhr.responseType = 'json'
+        xhr.onload = () => {
+            if(xhr.status >=400){
+               reject(xhr.response)
+            }else{
+                resolve(xhr.response)
+                console.log(xhr.response[0].id)
+            }
+        }
+        xhr.onerror = () => {
+           reject(xhr.response)
+        }
+        xhr.send()
+
+    })
+        .then(data =>
+            resultXhrRequest.innerHTML = `ID первого пользователя:${data[0].id}`
+        )
+})*/
+
+
+const requestURL = 'https://reqres.in/api/users/2'
+let resultXhrRequest = document.querySelector('.nameXhrRequest')
+let xhrBtn = document.querySelector('.xhrBtn')
+xhrBtn.addEventListener('click', async function (){
+    return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest()
+        xhr.open('GET', requestURL)
+        xhr.responseType = 'json'
+        xhr.onload = () => {
+            if(xhr.status >=400){
+                reject(xhr.response)
+            }else{
+                resolve(xhr.response)
+                console.log(xhr.response)
+            }
+        }
+        xhr.onerror = () => {
+            reject(xhr.response)
+        }
+        xhr.send()
+
+    })
+        .then(response  =>{
+            resultXhrRequest.innerHTML = response.data.id
+        })
+})
